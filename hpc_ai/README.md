@@ -122,16 +122,6 @@ pip install --user scikit-fmm==0.0.7
 pip install --user opencv-python
 ```
 
-Copy all notebooks from the Singularity image to your home directory.
-For the CFD case:
-```
-singularity run /cephyr/NOBACKUP/Datasets/Practical_DL/ai_science_cfd.simg cp -rT /workspace ~/workspace
-```
-For the climate case:
-```
-singularity run /cephyr/NOBACKUP/Datasets/Practical_DL/ai_science_climate.simg cp -rT /workspace ~/workspace
-```
-
 ### (Optional) Using Singularity
 
 On the Alvis cluster we have a reservation for one compute node with 4 V100 GPUs and
