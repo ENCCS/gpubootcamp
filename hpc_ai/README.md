@@ -73,6 +73,28 @@ you can run Jupyter on the Alvis login node to follow the training. You can run 
 to create the models and plot data, but **all compute-intensive work should be run 
 non-interactively on a compute node**. See detailed instructions below.
 
+### Fetch notebooks and datasets
+
+After logging in to Alvis, clone this repository to get the notebooks to 
+your Alvis home directory:
+```bash
+git clone https://github.com/ENCCS/gpubootcamp.git
+```
+
+You will find all material under `gpubootcamp/hpc_ai`. There are 
+two sciences cases to choose between under the `hpc_ai` directory, 
+`ai_science_cfd` and `ai_science_climate`. Regardless of which you use, 
+the Jupyter notebooks are under `English/python/jupyter_notebook/`.
+
+For the `ai_science_climate` case, you will need to copy a dataset 
+(unless you're running inside Singularity, see below):
+```
+cd gpubootcamp/hpc_ai/ai_science_climate/English/python/jupyter_notebook/Tropical_Cyclone_Intensity_Estimation
+unzip unzip /cephyr/NOBACKUP/Datasets/Practical_DL/dataset.zip
+```
+This will unpack the dataset of tropical cyclones into the correct directory.
+
+
 ### Adjustments of notebooks
 
 In notebooks using the data_utils.py script under `workspace/python/source_code/utils`,
@@ -83,6 +105,7 @@ it with `sys.path.append('/path/to/home/workspace/python/source_code')` where
 you replace `/path/to/home` with the actual path of your home directory (you can find it by typing
 `echo $HOME` in terminal). With this change, the notebook will still run fine inside Singularity on
 a compute node.
+
 
 ### (Standard) Running without Singularity
 
