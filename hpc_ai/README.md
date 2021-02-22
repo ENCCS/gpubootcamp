@@ -2,7 +2,78 @@
 
 # Alvis instructions
 
-## Adjustments of notebooks
+## Getting access to Alvis
+
+1. You need a SUPR account to access Alvis. If you don't already have one, visit https://supr.snic.se/ 
+   and follow the instructions. Your SUPR account will be added to SNIC project for the bootcamp event. 
+   After being added, you can request a user account on Alvis via https://supr.snic.se/account/.
+   C3SE will create your user account and send the username and one-time temporary password in 
+   separate emails.
+
+2. Login to Alvis requires that you are using a Swedish university network. If you are working from a 
+   university building and are using Eduroam or an ethernet connection, you should be able to log in 
+   right away. If you are working from home you will need to set up a Virtual Private Network (VPN) 
+   service, either the 
+   [Chalmers VPN service](https://it.portal.chalmers.se/itportal/NonCDAWindows/NonCDAWindows#remote) 
+   or another VPN service from your university. 
+   Contact your university's IT support to get help to set it up. 
+   Further information about accessing Alvis is available on the 
+   [C3SE support pages](https://www.c3se.chalmers.se/documentation/connecting/).
+
+3. Login to Alvis using your personal account:
+   ``` 
+   ssh -l <username> alvis1.c3se.chalmers.se
+   ```
+
+## Configuring Jupyter
+
+You need to configure Jupyter to be able to launch a Jupyter server on Alvis 
+and connect to it via your local browser.
+
+Create `~/.jupyter/jupyter_notebook_config.py` with the following content:
+
+```python
+import errno, socket, random
+def get_available_port(port_retries=10, ip='127.0.0.1'):
+    for port in (random.randrange(8888, 8988) for i in range(port_retries)):
+        try: socket.socket(socket.AF_INET, socket.SOCK_STREAM).bind((ip, port))
+        except: print('Port %i not available, trying another port.' % port)
+        else: return port
+    print('ERROR: No available port could be found.'); exit(1)
+
+port, hostname = get_available_port(), socket.gethostname()
+
+c.NotebookApp.ip = hostname
+c.NotebookApp.port = port
+c.NotebookApp.base_url = '/{0}/'.format(hostname)
+c.NotebookApp.custom_display_url = 'https://proxy.c3se.chalmers.se:{0}/{1}/'.format(port, hostname)
+c.NotebookApp.allow_origin = '*'
+c.NotebookApp.port_retries = 0
+c.NotebookApp.open_browser = False
+c.NotebookApp.allow_remote_access = True
+```
+
+You should now be able to run Jupyter and connect to it. First load module 
+and run `jupyter-notebook`:
+
+```bash
+module load IPython/7.9.0-Python-3.7.4
+jupyter-notebook
+```
+
+The output will show an URL like 
+`https://proxy.c3se.chalmers.se:8932/alvis1/?token=667b5bb97e01032ed12347898f66c20c79234e34ffd0bdb9f7`
+which you should copy-paste into your Firefox or Chrome browser. 
+
+## Running notebooks on Alvis
+
+Since the notebooks are designed to be run entirely inside Singularity with interactive 
+access to a GPU, some adjustments of a few notebooks need to be made. After the adjustments, 
+you can run Jupyter on the Alvis login node to follow the training. You can run code cells 
+to create the models and plot data, but **all compute-intensive work should be run 
+non-interactively on a compute node**. See detailed instructions below.
+
+### Adjustments of notebooks
 
 In notebooks using the data_utils.py script under `workspace/python/source_code/utils`,
 you need to make an adjustment to be able to run it on the login node or on compute nodes 
@@ -13,7 +84,7 @@ you replace `/path/to/home` with the actual path of your home directory (you can
 `echo $HOME` in terminal). With this change, the notebook will still run fine inside Singularity on
 a compute node.
 
-## Running without Singularity
+### Running without Singularity
 
 Load modules:
 ```
@@ -37,7 +108,7 @@ For the climate case:
 singularity run /cephyr/NOBACKUP/Datasets/Practical_DL/ai_science_climate.simg cp -rT /workspace ~/workspace
 ```
 
-## Using Singularity
+### Using Singularity
 
 On the Alvis cluster we have a reservation for one compute node with 4 V100 GPUs and
 one with 8 T4 GPUs. The T4 GPUs are for quick testing while production results
