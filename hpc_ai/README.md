@@ -93,9 +93,10 @@ module load TensorFlow/2.3.1-Python-3.7.4
 #module load scikit-learn/0.21.3-Python-3.7.4
 ```
 
-Install a missing package into your home directory (under `$HOME/.local`)
+Install missing package into your home directory (under `$HOME/.local`)
 ```
 pip install --user scikit-fmm==0.0.7
+pip install --user opencv-python
 ```
 
 Copy all notebooks from the Singularity image to your home directory.
