@@ -93,6 +93,10 @@ unzip unzip /cephyr/NOBACKUP/Datasets/Practical_DL/dataset.zip
 ```
 This will unpack the dataset of tropical cyclones into the correct directory.
 
+### Adjust notebooks
+
+You may need to add a code cell with `%matplotlib inline` to certain notebooks
+to make plots show properly.
 
 ### (Standard) Running without Singularity
 
