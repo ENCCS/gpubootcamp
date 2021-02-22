@@ -84,7 +84,7 @@ you replace `/path/to/home` with the actual path of your home directory (you can
 `echo $HOME` in terminal). With this change, the notebook will still run fine inside Singularity on
 a compute node.
 
-### Running without Singularity
+### (Standard) Running without Singularity
 
 Load modules:
 ```
@@ -109,7 +109,7 @@ For the climate case:
 singularity run /cephyr/NOBACKUP/Datasets/Practical_DL/ai_science_climate.simg cp -rT /workspace ~/workspace
 ```
 
-### Using Singularity
+### (Optional) Using Singularity
 
 On the Alvis cluster we have a reservation for one compute node with 4 V100 GPUs and
 one with 8 T4 GPUs. The T4 GPUs are for quick testing while production results
