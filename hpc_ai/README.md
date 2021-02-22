@@ -67,10 +67,9 @@ which you should copy-paste into your Firefox or Chrome browser.
 
 ## Running notebooks on Alvis
 
-Since the notebooks are designed to be run entirely inside Singularity with interactive 
-access to a GPU, some adjustments of a few notebooks need to be made. After the adjustments, 
-you can run Jupyter on the Alvis login node to follow the training. You can run code cells 
-to create the models and plot data, but **all compute-intensive work should be run 
+After downloading the Jupyter notebooks and datasets to Alvis, 
+you should run Jupyter on the Alvis login node to follow the training. You can run code cells 
+to create and inspect models and plot data, but **all compute-intensive work should be run 
 non-interactively on a compute node**. See detailed instructions below.
 
 ### Fetch notebooks and datasets
@@ -93,18 +92,6 @@ cd gpubootcamp/hpc_ai/ai_science_climate/English/python/jupyter_notebook/Tropica
 unzip unzip /cephyr/NOBACKUP/Datasets/Practical_DL/dataset.zip
 ```
 This will unpack the dataset of tropical cyclones into the correct directory.
-
-
-### Adjustments of notebooks
-
-In notebooks using the data_utils.py script under `workspace/python/source_code/utils`,
-you need to make an adjustment to be able to run it on the login node or on compute nodes 
-without Singularity.
-Thus, if you see `sys.path.append('/workspace/python/source_code')` in a code cell, replace
-it with `sys.path.append('/path/to/home/workspace/python/source_code')` where
-you replace `/path/to/home` with the actual path of your home directory (you can find it by typing
-`echo $HOME` in terminal). With this change, the notebook will still run fine inside Singularity on
-a compute node.
 
 
 ### (Standard) Running without Singularity
