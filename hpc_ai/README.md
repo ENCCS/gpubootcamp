@@ -103,6 +103,8 @@ to make plots show properly.
 
 ### (Standard) Running without Singularity
 
+#### Set up modules
+
 Load modules:
 ```
 module load GCC/8.3.0  CUDA/10.1.243  OpenMPI/3.1.4  IPython/7.9.0-Python-3.7.4
@@ -110,11 +112,44 @@ module load TensorFlow/2.3.1-Python-3.7.4
 module load scikit-learn/0.21.3-Python-3.7.4
 ```
 
+#### Install dependencies
+
 Install missing package into your home directory (under `$HOME/.local`)
 ```
 pip install --user scikit-fmm==0.0.7
 pip install --user opencv-python
 ```
+
+#### Run Jupyter
+
+You are now ready to start running the bootcamp notebooks. 
+Navigate to the correct directory for the `ai_science_cfd`
+or `ai_science_climate` science cases and run Jupyter:
+```
+cd ~/gpubootcamp/hpc_ai/ai_science_cfd/English/python/jupyter_notebook
+# or gpubootcamp/hpc_ai/ai_science_climate/English/python/jupyter_notebook
+
+jupyter-notebook
+```
+
+You now have a Jupyter server running on the Alvis login node.
+Open the URL that you find in the output in your local browser (it starts with 
+https://proxy.c3se.chalmers.se) - this will connect to the running Jupyter server.  
+To get started, open the `Start_here.ipynb` notebook from the Jupyter dashboard.
+
+#### Running notebooks
+
+You can interactively follow the bootcamp by opening notebooks inside Jupyter
+and modifying and running cells. Most cells do light-weight pre-processing 
+or visualization, and these can be run inside the running Jupyter session.   
+**However, all compute-intensive cells should be run on a compute node with 
+a GPU**. These are the cells where a neural network is being trained, typically 
+you'll see a `model.fit(...)` call.
+
+
+
+---
+
 
 ### (Optional) Using Singularity
 
