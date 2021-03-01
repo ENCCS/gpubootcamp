@@ -146,18 +146,37 @@ or visualization, and these can be run inside the running Jupyter session.
 a GPU**. These are the cells where a neural network is being trained, typically 
 you'll see a `model.fit(...)` call.
 
+On the Alvis cluster we have a reservation for one compute node with 4 V100 GPUs and
+one with 8 T4 GPUs. The T4 GPUs are for testing while production results
+should be run on a V100. Each run will use a single GPU, and since multiple users can
+share a compute node there can be up to 4 and 8 simultaneous runs on the V100 and T4 nodes,
+respectively. Each run normally takes only a couple of minutes.
 
+To run a notebook on a GPU compute node, open a terminal from the Jupyter dashboard
+(click "New" on the right and select "Terminal"). Inside the terminal, navigate to where 
+the notebook is. The following command will submit the notebook to the batch queue to be 
+executed on a V100 GPU using the bootcamp reservation:
+```bash
+srun -A SNIC2021-7-3 --reservation=bootcamp --gpus-per-node=V100:1 -t 0:10:00 -N 1 jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute <NAME-OF-NOTEBOOK>.ipynb
+```
+
+To run instead on a T4 GPU, replace with `--gpus-per-node=T4:1`.  
+You can monitor the job by running `squeue -u $USER`.  
+Note that an error message like `AttributeError: 'NoneType' object has no attribute 'thread'`
+at the end of your run is harmless.
+
+When the job finishes, a new notebook is created with all execution results under 
+a filename `<NAME-OF-NOTEBOOK>.nbconvert.ipynb`. You can open this notebook from 
+the Jupyter dashboard and inspect the results.  
+If you want to make changes and rerun the same notebook, first close the 
+`<NAME-OF-NOTEBOOK>.nbconvert.ipynb` notebook by clicking "File" and select 
+"Close and Halt", and then do your changes to the original notebook and 
+submit it again with `srun`.
 
 ---
 
 
 ### (Optional) Using Singularity
-
-On the Alvis cluster we have a reservation for one compute node with 4 V100 GPUs and
-one with 8 T4 GPUs. The T4 GPUs are for quick testing while production results
-should be run on a V100. Each run will use a single GPU, and since multiple users can
-share a compute node there can be up to 4 and 8 simultaneous runs on the V100 and T4 nodes,
-respectively.
 
 Start by copying all notebooks from the Singularity image to your home directory.
 For the CFD case:
