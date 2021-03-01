@@ -91,7 +91,7 @@ Jupyter notebooks can be found under `English/python/jupyter_notebook/`.
 For the `ai_science_climate` case, you will need to copy a dataset 
 (unless you're running inside Singularity, see below):
 ```
-cd gpubootcamp/hpc_ai/ai_science_climate/English/python/jupyter_notebook/Tropical_Cyclone_Intensity_Estimation
+cd ~/gpubootcamp/hpc_ai/ai_science_climate/English/python/jupyter_notebook/Tropical_Cyclone_Intensity_Estimation
 unzip unzip /cephyr/NOBACKUP/Datasets/Practical_DL/dataset.zip
 ```
 This will unpack the dataset of tropical cyclones into the correct directory.
