@@ -101,9 +101,7 @@ This will unpack the dataset of tropical cyclones into the correct directory.
 You may need to add a code cell with `%matplotlib inline` to certain notebooks
 to make plots show properly.
 
-### (Standard) Running without Singularity
-
-#### Set up modules
+### Set up modules
 
 Load modules:
 ```
@@ -112,7 +110,7 @@ module load TensorFlow/2.3.1-Python-3.7.4
 module load scikit-learn/0.21.3-Python-3.7.4
 ```
 
-#### Install dependencies
+### Install dependencies
 
 Install missing package into your home directory (under `$HOME/.local`)
 ```
@@ -120,7 +118,7 @@ pip install --user scikit-fmm==0.0.7
 pip install --user opencv-python
 ```
 
-#### Run Jupyter
+### Running and connecting to Jupyter server 
 
 You are now ready to start running the bootcamp notebooks. 
 Navigate to the correct directory for the `ai_science_cfd`
@@ -137,13 +135,13 @@ Open the URL that you find in the output in your local browser (it starts with
 https://proxy.c3se.chalmers.se) - this will connect to the running Jupyter server.  
 To get started, open the `Start_here.ipynb` notebook from the Jupyter dashboard.
 
-#### Running notebooks
+### Interactive and non-interactive usage
 
 You can interactively follow the bootcamp by opening notebooks inside Jupyter
 and modifying and running cells. Most cells do light-weight pre-processing 
 or visualization, and these can be run inside the running Jupyter session.   
-**However, all compute-intensive cells should be run on a compute node with 
-a GPU**. These are the cells where a neural network is being trained, typically 
+**However, all compute-intensive cells should be run on a GPU compute node**. 
+These are the cells where a neural network is being trained, typically 
 you'll see a `model.fit(...)` call.
 
 On the Alvis cluster we have a reservation for one compute node with 4 V100 GPUs and
@@ -161,7 +159,7 @@ srun -A SNIC2021-7-3 --reservation=bootcamp --gpus-per-node=V100:1 -t 0:10:00 -N
 ```
 
 To run instead on a T4 GPU, replace with `--gpus-per-node=T4:1`.  
-You can monitor the job by running `squeue -u $USER`.  
+You can monitor your job by running `squeue -u $USER`.  
 Note that an error message like `AttributeError: 'NoneType' object has no attribute 'thread'`
 at the end of your run is harmless.
 
@@ -178,6 +176,9 @@ submit it again with `srun`.
 
 ### (Optional) Using Singularity
 
+It's also possible to run the bootcamp notebooks inside a Singularity container, 
+although this is not needed on Alvis.
+
 Start by copying all notebooks from the Singularity image to your home directory.
 For the CFD case:
 ```
@@ -188,7 +189,7 @@ For the climate case:
 singularity run /cephyr/NOBACKUP/Datasets/Practical_DL/ai_science_climate.simg cp -rT /workspace ~/workspace
 ```
 
-Module combo for running jupyter on login node:
+Module combo for running Jupyter on login node:
 
 ```
 module load GCC/8.3.0  CUDA/10.1.243  OpenMPI/3.1.4  IPython/7.9.0-Python-3.7.4
