@@ -75,10 +75,12 @@ non-interactively on a compute node**. See detailed instructions below.
 ### Fetch notebooks and datasets
 
 After logging in to Alvis, clone this repository to get the notebooks to 
-your Alvis home directory (it must be the home directory!):
+your Alvis home directory (**it must be the home directory!**):
 ```bash
 cd
 git clone https://github.com/ENCCS/gpubootcamp.git
+cd gpubootcamp
+git checkout alvis
 ```
 
 You will find all material under `gpubootcamp/hpc_ai`. There are 
