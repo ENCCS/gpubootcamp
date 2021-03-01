@@ -83,10 +83,10 @@ cd gpubootcamp
 git checkout alvis
 ```
 
-You will find all material under `gpubootcamp/hpc_ai`. There are 
-two sciences cases to choose between under the `hpc_ai` directory, 
-`ai_science_cfd` and `ai_science_climate`. Regardless of which you use, 
-the Jupyter notebooks are under `English/python/jupyter_notebook/`.
+You will find all material under the `hpc_ai` subdirectory. There are 
+two science cases which will be covered on day 2, 
+`ai_science_cfd` and `ai_science_climate`. Under both folders,  
+Jupyter notebooks can be found under `English/python/jupyter_notebook/`.
 
 For the `ai_science_climate` case, you will need to copy a dataset 
 (unless you're running inside Singularity, see below):
