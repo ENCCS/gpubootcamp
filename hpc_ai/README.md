@@ -92,9 +92,10 @@ For the `ai_science_climate` case, you will need to copy a dataset
 (unless you're running inside Singularity, see below):
 ```
 cd ~/gpubootcamp/hpc_ai/ai_science_climate/English/python/jupyter_notebook/Tropical_Cyclone_Intensity_Estimation
-unzip unzip /cephyr/NOBACKUP/Datasets/Practical_DL/dataset.zip
+unzip /cephyr/NOBACKUP/Datasets/Practical_DL/dataset.zip
+cp /cephyr/NOBACKUP/Datasets/Practical_DL/trained_16.h5 .
 ```
-This will unpack the dataset of tropical cyclones into the correct directory.
+This will unpack the dataset of tropical cyclones and copy a pre-trained model into the correct directory.
 
 ### Adjust notebooks
 
