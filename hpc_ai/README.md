@@ -117,7 +117,6 @@ module load OpenCV/4.2.0-Python-3.7.4
 Install missing package into your home directory (under `$HOME/.local`)
 ```
 pip install --user scikit-fmm==0.0.7
-pip install --user opencv-python
 ```
 
 ### Running and connecting to Jupyter server 
