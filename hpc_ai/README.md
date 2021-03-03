@@ -113,10 +113,15 @@ module load scikit-learn/0.21.3-Python-3.7.4
 
 ### Install dependencies
 
-Install missing package into your home directory (under `$HOME/.local`)
+Create and activate a virtual environment:
 ```
-pip install --user scikit-fmm==0.0.7
-pip install --user opencv-python
+python -m venv venv
+source venv/bin/activate
+```
+Install missing package into the virtual environment:
+```
+pip install scikit-fmm==0.0.7
+pip install opencv-python
 ```
 
 ### Running and connecting to Jupyter server 
