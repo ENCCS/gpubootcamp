@@ -110,6 +110,7 @@ module load GCC/8.3.0  CUDA/10.1.243  OpenMPI/3.1.4  IPython/7.9.0-Python-3.7.4
 module load TensorFlow/2.3.1-Python-3.7.4
 module load scikit-learn/0.21.3-Python-3.7.4
 module load OpenCV/4.2.0-Python-3.7.4
+module load Seaborn/0.11.1-Python-3.7.4
 ```
 
 ### Install dependencies
