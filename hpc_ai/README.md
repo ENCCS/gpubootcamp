@@ -53,13 +53,9 @@ c.NotebookApp.open_browser = False
 c.NotebookApp.allow_remote_access = True
 ```
 
-You should now be able to run Jupyter and connect to it. First load module 
-and run `jupyter-notebook`:
+You should now be able to run Jupyter and connect to it. See instructions below for how 
+to load the correct modules, open Jupyter and connect to it from your browser.
 
-```bash
-module load GCC/8.3.0 CUDA/10.1.243 OpenMPI/3.1.4 IPython/7.9.0-Python-3.7.4
-jupyter-notebook
-```
 
 The output will show an URL like 
 `https://proxy.c3se.chalmers.se:8932/alvis1/?token=667b5bb97e01032ed12347898f66c20c79234e34ffd0bdb9f7`
