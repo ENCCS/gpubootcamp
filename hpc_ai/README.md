@@ -149,7 +149,11 @@ Each run normally takes only a couple of minutes so you shouldn't need to
 wait long for your jobs to complete.
 
 To run a notebook on a GPU compute node, open a terminal from the Jupyter dashboard
-(click "New" on the right and select "Terminal"). Inside the terminal, navigate to where 
+(click "New" on the right and select "Terminal") - see screenshot below.
+
+![dashboard](dashboard.png)
+
+Inside the terminal, navigate to where 
 the notebook is. The following command will submit the notebook to the batch queue to be 
 executed on a V100 GPU using the bootcamp reservation:
 ```bash
@@ -166,8 +170,10 @@ a filename `<NAME-OF-NOTEBOOK>.nbconvert.ipynb`. You can open this notebook from
 the Jupyter dashboard and inspect the results.  
 If you want to make changes and rerun the same notebook, first close the 
 `<NAME-OF-NOTEBOOK>.nbconvert.ipynb` notebook by clicking "File" and select 
-"Close and Halt", and then do your changes to the original notebook and 
+"Close and Halt" (see image below), and then do your changes to the original notebook and 
 submit it again with `srun`.
+
+![close-halt](close_halt.png)
 
 ---
 
