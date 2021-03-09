@@ -157,10 +157,9 @@ Inside the terminal, navigate to where
 the notebook is. The following command will submit the notebook to the batch queue to be 
 executed on a V100 GPU using the bootcamp reservation:
 ```bash
-srun -A SNIC2021-7-3 --reservation=bootcamp --gpus-per-node=V100:1 -t 0:10:00 -N 1 jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute <NAME-OF-NOTEBOOK>.ipynb
+srun -A SNIC2021-7-3 --reservation=bootcamp2 --gpus-per-node=V100:1 -t 0:10:00 -N 1 jupyter nbconvert --ExecutePreprocessor.timeout=-1 --to notebook --execute <NAME-OF-NOTEBOOK>.ipynb
 ```
 
-**Note:** on day 2 of the bootcamp please use a different reservation name: `--reservation=bootcamp2`.  
 You can monitor your job by running `squeue -u $USER`.  
 Note that an error message like `AttributeError: 'NoneType' object has no attribute 'thread'`
 at the end of your run is harmless.
